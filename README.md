@@ -3,6 +3,8 @@ This is a project which is built for an undergraduate thesis titled ***Augmented
 
 Much of this code has been adapted from NDI's CAPI Sample, which can be found at: https://github.com/Oct19/NDI-API-Sample-v1.4.0/tree/master
 
+Note that this code is intended to be run in VSCode on Mac.
+
 ## Setup:
 
 1. Ensure VSCode is installed.
