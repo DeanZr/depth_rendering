@@ -10,12 +10,12 @@ void filterTooltips(const Mat& frame, Mat& colour_mask, const Scalar& lower_mask
     // Simply mask colour first
     inRange(hsv, lower_mask, upper_mask, colour_mask);
 
-    // Morphological operations - THIS SEEMS TO BE SUFFICIENT BUT CAN BE CHANGED AS REQUIRED
+    // Morphological operations
     Mat opening_kernel = cv::getStructuringElement(MORPH_RECT, Size(9, 9));
     cv::morphologyEx(colour_mask, colour_mask, MORPH_OPEN, opening_kernel);
 }
 
-// Finds the largest contour from a given mask. Also updates centroid of thi contour
+// Finds the largest contour from a given mask. Also updates centroid of this contour
 void findLargestContour(Mat mask, Mat& frame, Point& largest_centroid) {
 
     // Find contours in the mask

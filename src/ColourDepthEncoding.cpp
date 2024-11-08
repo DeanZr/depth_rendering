@@ -32,7 +32,7 @@ void getDepthColour(const float& depth, Scalar& near_dist_colour, Scalar& far_di
 }
 
 // Draws colour-indicating relative depth along the occluded axis
-// Blue indicates closer to the camera, red indicates further
+// White indicates closer to the camera, black indicates further
 void drawColourDepthEncoding(Mat& frame, const vector<Point>& tooltip_coords, const double& depth) {
 
     // Check there are two tooltips in frame

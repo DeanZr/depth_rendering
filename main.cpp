@@ -354,7 +354,7 @@ void runVisualisation(std::vector<ToolData>& enabledTools) {
     
     // Get video capture
     VideoCapture cap;
-    int deviceID = 0; // 0 = laptop webcam, 1 = phone
+    int deviceID = 0;
     int apiID = cv::CAP_ANY;
 
     // Open selected camera using selected API
@@ -476,7 +476,7 @@ void runVisualisation(std::vector<ToolData>& enabledTools) {
 
             enabledTools[t].dataIsNew = false; // once printed, the data becomes "old"
         }
-        // 1 Dimensional distance for occluded view (x-axis)
+        // 1 Dimensional distance for obstructed view (x-axis)
         // If this value is positive the right hand tooltip is in front
         depthData = toolLoc[0][0] - toolLoc[1][0]; // Parallel axis
         // depthData = toolLoc[0][2] - toolLoc[1][2]; // Perpendicular axis
@@ -531,7 +531,6 @@ void runVisualisation(std::vector<ToolData>& enabledTools) {
         filterTooltips(frame,pink_mask,LOWER_PINK_MASK,UPPER_PINK_MASK);
 
         // Find contours and centroids of tooltips from the masks
-        // Then draw distance visualisation
         Point tooltip1; // GREEN TOOLTIP
         Point tooltip2; // PINK TOOLTIP
         findLargestContour(green_mask, frame, tooltip1);
@@ -540,16 +539,16 @@ void runVisualisation(std::vector<ToolData>& enabledTools) {
 
         if (is_col_depth) {
             
-            // Colour encode markers on the tooltips to indicate relative depth along the occluded axis
+            // Colour encode markers on the tooltips to indicate relative depth along the obstructed axis
             drawColourDepthEncoding(frame, tooltip_coords, depthData);
         }      
         if (is_min_dist) {
 
-            // Draw minimum distance vectors between the tooltips
+            // Draw the minimum distance vector between the tooltips
             drawMinimumDistVector(frame, tooltip_coords, distData);
         }  
 
-        // Flip the frame (for right handers) and display
+        // Display the frame
         imshow("Original Frame", frame);
 
         // Get key to toggle view mode or quit program
